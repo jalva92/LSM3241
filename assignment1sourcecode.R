@@ -20,6 +20,6 @@ contrastmatrix=makeContrasts(Nontreated-Knockdown, levels=modelmatrix) #Since kn
 fit1=lmFit(rmanormalized, modelmatrix)
 contrastfit=contrasts.fit(fit1,contrastmatrix) 
 contrastfit=eBayes(contrastfit) 
-significanthits=topTable(contrastfit,p.value = 0.05) 
+significanthits=topTable(contrastfit,p.value = 0.05, n=Inf) 
 
 probeMapping=select(hgu133plus2.db,columns=c("SYMBOL",”GENENAME”),keys = rownames(significanthits))
